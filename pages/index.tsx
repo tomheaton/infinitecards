@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from "next/link";
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -22,15 +23,19 @@ const Home: NextPage = () => {
                 </p>
 
                 <div className={styles.grid}>
-                    <a href="/deck" className={styles.card}>
+                    <div className={styles.card}>
                         <h2>Deck</h2>
-                        <p>Create the deck</p>
-                    </a>
+                        <Link href={"/deck"}>
+                            <p>Create a deck</p>
+                        </Link>
+                    </div>
 
-                    <a href="/player" className={styles.card}>
+                    <div className={styles.card}>
                         <h2>Player</h2>
-                        <p>Join a deck</p>
-                    </a>
+                        <Link href={"/player"}>
+                            <p>Join a deck</p>
+                        </Link>
+                    </div>
                 </div>
             </main>
 
