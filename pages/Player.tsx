@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-const Deck: NextPage = () => {
+const Player: NextPage = () => {
     return (
         <div className={styles.container}>
             <Head>
@@ -25,4 +25,4 @@ const Deck: NextPage = () => {
     )
 }
 
-export default Deck;
+export default Player;
