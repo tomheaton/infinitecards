@@ -23,7 +23,7 @@ const Home: NextPage = () => {
 
                 <div className={styles.grid}>
                     <a href="/deck" className={styles.card}>
-                        <h2>Deck;</h2>
+                        <h2>Deck</h2>
                         <p>Create the deck</p>
                     </a>
 
@@ -47,7 +47,7 @@ const Home: NextPage = () => {
                 </a>
             </footer>
         </div>
-    )
+    );
 }
 
-export default Home
+export default Home;
