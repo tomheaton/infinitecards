@@ -23,19 +23,19 @@ const Home: NextPage = () => {
                 </p>
 
                 <div className={styles.grid}>
-                    <div className={styles.card}>
-                        <h2>Deck</h2>
-                        <Link href={"/deck"}>
+                    <Link href={"/deck"}>
+                        <div className={styles.card}>
+                            <h2>Deck</h2>
                             <p>Create a deck</p>
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
 
-                    <div className={styles.card}>
-                        <h2>Player</h2>
-                        <Link href={"/player"}>
+                    <Link href={"/player"}>
+                        <div className={styles.card}>
+                            <h2>Player</h2>
                             <p>Join a deck</p>
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
                 </div>
             </main>
 
