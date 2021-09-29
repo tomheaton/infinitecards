@@ -18,11 +18,17 @@ const Dev: NextPage = () => {
                     Dev
                 </h1>
 
-                <h3>
-                    <Link href={"/dev/decks"}>Decks</Link>
-                    <br/>
-                    <Link href={"/dev/players"}>Players</Link>
-                </h3>
+                <ul>
+                    <li>
+                        <Link href={"/dev/decks"}>Decks</Link>
+                    </li>
+                    <li>
+                        <Link href={"/dev/players"}>Players</Link>
+                    </li>
+                    <li>
+                        <Link href={"/dev/playground"}>Playground</Link>
+                    </li>
+                </ul>
             </main>
         </div>
     );
