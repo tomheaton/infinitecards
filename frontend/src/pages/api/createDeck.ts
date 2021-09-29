@@ -5,7 +5,7 @@ type Data = {
 }
 
 const handler = (req: NextApiRequest, res: NextApiResponse<Data>) => {
-    // TODO: add user to deck lobby.
+    // TODO: create a lobby.
     res.status(200).json({ name: 'John Doe' })
 }
 
