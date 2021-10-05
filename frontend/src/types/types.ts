@@ -1,7 +1,7 @@
 type Session = {
     id: string,
-    deck: Deck | null
-    players: Player[] | null
+    deck: Deck
+    players: Player[]
 }
 
 type Card = {
@@ -10,7 +10,7 @@ type Card = {
 }
 
 type Deck = {
-    cards: Card[] | null
+    cards: Card[]
 }
 
 type Player = {

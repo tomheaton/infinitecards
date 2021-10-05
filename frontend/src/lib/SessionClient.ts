@@ -1,6 +1,6 @@
-import {Session, Player} from "../types/types";
+import {Player, Session} from "../types/types";
 import {v4, validate} from "uuid";
-import { uniqueNamesGenerator, Config, starWars } from 'unique-names-generator';
+import {starWars, uniqueNamesGenerator} from 'unique-names-generator';
 
 class SessionHandler {
 
@@ -10,28 +10,32 @@ class SessionHandler {
         this.currentSessions = [];
     }
 
-    createSession() {
+    async createSession() {
         let newSession: Session = {
             id: v4(),
             deck: {
-                cards: null
+                cards: []
             },
             players: []
         }
         this.currentSessions.push(newSession)
+
+        return this.currentSessions;
     }
 
-    joinSession({id, name}: {id: string, name: string}) {
+    async joinSession({id}: {id: string}) {
         // find if id is valid
         if (validate(id)) {
             let newPlayer: Player  = {
                 id: v4(),
                 name: uniqueNamesGenerator({dictionaries: [starWars]})
             }
+            //return newPlayer;
 
-            this.currentSessions.filter((session) => {
-                if (session.id === id && session.players !== null) {
+            this.currentSessions.find((session) => {
+                if (session.id === id) {
                     session.players.push(newPlayer)
+                    this.currentSessions.push(...this.currentSessions, session)
                     return newPlayer;
                 }
             })
@@ -40,12 +44,10 @@ class SessionHandler {
         return null;
     }
 
-    getSessions() {
+    async getSessions() {
         return this.currentSessions;
     }
 
 }
 
-const sessionHandler = new SessionHandler()
-
-export default sessionHandler;
+export default SessionHandler;

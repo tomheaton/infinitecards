@@ -1,15 +1,14 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import sessionHandler from "../../../lib/SessionManager";
+import type {NextApiRequest, NextApiResponse} from 'next'
+import sessionHandler from "../../../lib/sessionHandler";
 import {Player} from "../../../types/types";
 
 type Data = Player | null;
 
-const handler = (req: NextApiRequest, res: NextApiResponse<Data>) => {
-    const {id, name} = req.query as {id: string, name: string}
+const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+    const {id} = req.query as {id: string}
 
-    // TODO: join a lobby.
-    const result = sessionHandler.joinSession({id, name});
-
+    // Join a deck.
+    const result = await sessionHandler.joinSession({id});
     res.status(200).json(result)
 }
 
