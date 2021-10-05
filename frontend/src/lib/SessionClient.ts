@@ -5,12 +5,14 @@ import {starWars, uniqueNamesGenerator} from 'unique-names-generator';
 class SessionHandler {
 
     currentSessions: Session[];
+    currentPlayers: Player[];
 
     constructor() {
         this.currentSessions = [];
+        this.currentPlayers = [];
     }
 
-    async createSession() {
+    createSession = async (): Promise<Session> => {
         let newSession: Session = {
             id: v4(),
             deck: {
@@ -20,31 +22,41 @@ class SessionHandler {
         }
         this.currentSessions.push(newSession)
 
-        return this.currentSessions;
+        return newSession;
     }
 
-    async joinSession({id}: {id: string}) {
-        // find if id is valid
-        if (validate(id)) {
-            let newPlayer: Player  = {
-                id: v4(),
-                name: uniqueNamesGenerator({dictionaries: [starWars]})
-            }
-            //return newPlayer;
+    joinSession = async ({id}: {id: string}): Promise<Player[]> => {
 
-            this.currentSessions.find((session) => {
-                if (session.id === id) {
-                    session.players.push(newPlayer)
-                    this.currentSessions.push(...this.currentSessions, session)
-                    return newPlayer;
+        /*return new Promise<Session>(((resolve, reject) => {
+            if (validate(id)) {
+                let newPlayer: Player  = {
+                    id: v4(),
+                    name: uniqueNamesGenerator({dictionaries: [starWars]})
                 }
-            })
+                this.currentPlayers.push(newPlayer);
+
+/!*                this.currentSessions.find((session) => {
+                    if (session.id === id) {
+                        session.players.push(newPlayer)
+                        this.currentSessions.push(...this.currentSessions, session)
+                        return newPlayer;
+                    }
+                })
+                const newSessions = this.currentSessions.map((s) => s.id === id ? {...s, players: s.players.push(newPlayer)}: s);
+                this.currentSessions = newSessions;*!/
+            }
+        }));*/
+        let newPlayer: Player = {
+            id: v4(),
+            name: uniqueNamesGenerator({dictionaries: [starWars]})
         }
 
-        return null;
+        this.currentPlayers.push(newPlayer)
+
+        return this.currentPlayers;
     }
 
-    async getSessions() {
+    getSessions = async (): Promise<Session[]> => {
         return this.currentSessions;
     }
 
